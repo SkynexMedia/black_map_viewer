@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interactive Black Map | My Website</title>
+  <meta name="description" content="Explore an interactive black-background map with zoom and pan, powered by OpenSeadragon.">
+  <meta name="keywords" content="interactive map, zoomable map, black map, OpenSeadragon">
+  <meta name="author" content="Your Name">
+
+  <!-- Open Graph for social sharing -->
+  <meta property="og:title" content="Interactive Black Map | My Website">
+  <meta property="og:description" content="Explore an interactive zoomable black-background map.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourusername.github.io/black_map_viewer/viewer.html">
+  <meta property="og:image" content="https://yourusername.github.io/black_map_viewer/black_map.png">
+
+  <!-- OpenSeadragon -->
+  <script src="https://openseadragon.github.io/openseadragon/openseadragon.min.js"></script>
+
+  <style>
+    html, body { margin:0; padding:0; height:100%; width:100%; overflow:hidden; background:black; }
+    #openseadragon { width:100%; height:100%; background:black; }
+  </style>
+</head>
+<body>
+  <div id="openseadragon"></div>
+
+  <script>
+    var viewer = OpenSeadragon({
+      id: "openseadragon",
+      prefixUrl: "https://openseadragon.github.io/openseadragon/images/",
+      tileSources: "black_map_tiles.dzi",
+      showNavigator: true,
+      background: "#000000"
+    });
+
+    viewer.addHandler('open', function() {
+      viewer.viewport.goHome(true); // fit image to screen
+    });
+  </script>
+</body>
+</html>
